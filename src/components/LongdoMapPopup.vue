@@ -11,7 +11,7 @@ export default {
       required: true
     }
   },
-  name: 'LongdoPopup',
+  name: 'LongdoMapPopup',
   created: function () {
 
     this.map.then(map => {

@@ -11,10 +11,10 @@
           v-for="marker in markers"
           :marker="marker"></LongdoMapMarker>
 
-        <LongdoPopup
+        <LongdoMapPopup
           v-for="popup in popups"
           :popup="popup"
-          :map="map"></LongdoPopup>
+          :map="map"></LongdoMapPopup>
       </template>
     </LongdoMap>
   </div>
@@ -23,14 +23,14 @@
 <script>
 import LongdoMap from './components/LongdoMap.vue'
 import LongdoMapMarker from './components/LongdoMapMarker.vue'
-import LongdoPopup from './components/LongdoPopup.vue'
+import LongdoMapPopup from './components/LongdoMapPopup.vue'
 
 export default {
   name: 'app',
   components: {
     LongdoMap,
     LongdoMapMarker,
-    LongdoPopup
+    LongdoMapPopup
   },
   data: () => {
     return {

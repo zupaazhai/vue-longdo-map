@@ -1,29 +1,65 @@
 # vue-longdo-map
 
-## Project setup
-```
-npm install
-```
+vue-longdo-map เป็น simple component wrapper ที่ในเวอร์ชันปัจจุบันยังรองรับเฉพาะ Overlay ที่เป็น Maker และ Popup ตัว Library รองรองรับการ costom component เพื่อให้รองรับคุณสมบัติได้เอง สามารถดูตัวอย่างการสร้าง component เพิ่มเติมได้จาก component /components/LongoMapPopup.vue
 
-### Compiles and hot-reloads for development
+# การใข้งานเบื้องต้น
+## ติดตั้ง
 ```
-npm run serve
+npm i vue-longdo-map
 ```
+## การเรียกใช้
+ลงทะเบียนกับทาง Longdo Map และสร้าง API Key เพื่อนำมาใช้งาน โดยหน้าการสร้าง API Key ให้ไปที่เมนู ** My Londo Map ** > ** Longdo Map API ** 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+```html
+<template>
+    <div id="app">
+			<LongdoMap :center="map.center" :apiKey="map.apiKey">
+				<template slot-scope="{ map }">
+					<LongdoMapMarker
+						:map="map"
+						@click="onClickMarker"
+						@move="onMoveMarker"
+						@hover="onHoverMarker"
+						@change="onChageMarker"
+						v-for="marker in markers"
+						:marker="marker"></LongdoMapMarker>
 
-### Run your tests
+					<LongdoPopup
+						v-for="popup in popups"
+						:popup="popup"
+						:map="map"></LongdoPopup>
+				</template>
+			</LongdoMap>
+    </div>
+</template>
 ```
-npm run test
-```
+```javascript
+<script>
+import LongdoMap from './components/LongdoMap.vue'
+import LongdoMapMarker from './components/LongdoMapMarker.vue'
+import LongdoMapPopup from './components/LongdoMapPopup.vue'
 
-### Lints and fixes files
-```
-npm run lint
-```
+export default {
+  name: 'app',
+  components: {
+    LongdoMap,
+    LongdoMapMarker,
+    LongdoMapPopup
+	},
+	data:{
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+	}
+}
+```
+# การเพิ่ม component
+ในกรณ๊ที่ต้องการ custom component อื่นของ map ขึ้นมาใหม่ ภายใต้ component นั้นให้เตรียม props ไว้ในในชื่อ map ที่มี type เป็นแบบ Promise ดังนั้นเมื่อเรียกใช้ component ใหม่ให้เรียกใช้เป็น child ของ component <LongdoMap>
+```html
+<LongdoMap>
+	<template scope="{map}">
+		<LongdoMapCostomComponent :map="map"></LongdoMapCostomComponent>
+	</template>
+</LongdoMap>
+```
+# ข้อมูลเพิ่มเติม
+Longdo Map API Reference ([http://api.longdo.com/map/doc/content/](http://api.longdo.com/map/doc/content/))
+Longdo Map Demo ([http://api.longdo.com/map/doc/](http://api.longdo.com/map/doc/))
