@@ -2,14 +2,14 @@
 
 vue-longdo-map เป็น simple component wrapper ที่ในเวอร์ชันปัจจุบันยังรองรับเฉพาะ Overlay ที่เป็น Maker และ Popup ตัว Library รองรองรับการ costom component เพื่อให้รองรับคุณสมบัติได้เอง สามารถดูตัวอย่างการสร้าง component เพิ่มเติมได้จาก component /components/LongoMapPopup.vue
 
-# การใข้งานเบื้องต้น
+# การใช้งานเบื้องต้น
 ## ติดตั้ง
 ```
 npm i vue-longdo-map
 ```
 ## การเรียกใช้
-ลงทะเบียนกับทาง Longdo Map และสร้าง API Key เพื่อนำมาใช้งาน โดยหน้าการสร้าง API Key ให้ไปที่เมนู ** My Londo Map ** > ** Longdo Map API ** 
-
+ลงทะเบียนกับทาง Longdo Map และสร้าง API Key เพื่อนำมาใช้งาน โดยหน้าการสร้าง API Key ให้ไปที่เมนู **My Londo Map** > **Longdo Map API** 
+[https://map.longdo.com/user/{{user_id}}](https://map.longdo.com/user/{{user_id}})
 ```html
 <template>
 	<div id="app">
@@ -35,9 +35,7 @@ npm i vue-longdo-map
 ```
 ```javascript
 <script>
-import LongdoMap from './components/LongdoMap.vue'
-import LongdoMapMarker from './components/LongdoMapMarker.vue'
-import LongdoMapPopup from './components/LongdoMapPopup.vue'
+import { LongdoMap, LongdoMapMarker, LongdoMapPopup}  from 'vue-longdo-map'
 
 export default {
   name: 'app',
