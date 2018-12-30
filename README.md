@@ -12,25 +12,25 @@ npm i vue-longdo-map
 
 ```html
 <template>
-    <div id="app">
-			<LongdoMap :center="map.center" :apiKey="map.apiKey">
-				<template slot-scope="{ map }">
-					<LongdoMapMarker
-						:map="map"
-						@click="onClickMarker"
-						@move="onMoveMarker"
-						@hover="onHoverMarker"
-						@change="onChageMarker"
-						v-for="marker in markers"
-						:marker="marker"></LongdoMapMarker>
+	<div id="app">
+		<LongdoMap :center="map.center" :apiKey="map.apiKey">
+			<template slot-scope="{ map }">
+				<LongdoMapMarker
+					:map="map"
+					@click="onClickMarker"
+					@move="onMoveMarker"
+					@hover="onHoverMarker"
+					@change="onChageMarker"
+					v-for="marker in markers"
+					:marker="marker"></LongdoMapMarker>
 
-					<LongdoPopup
-						v-for="popup in popups"
-						:popup="popup"
-						:map="map"></LongdoPopup>
-				</template>
-			</LongdoMap>
-    </div>
+				<LongdoPopup
+					v-for="popup in popups"
+					:popup="popup"
+					:map="map"></LongdoPopup>
+			</template>
+		</LongdoMap>
+	</div>
 </template>
 ```
 ```javascript
@@ -47,7 +47,13 @@ export default {
     LongdoMapPopup
 	},
 	data:{
-
+		map: {
+			apiKey: 'xxxxxxxxxxxxxxx' // API Key
+			center: {
+				lon: 100,
+				lat: 16
+			}
+		}
 	}
 }
 ```
