@@ -66,6 +66,12 @@ export default {
 	</template>
 </LongdoMap>
 ```
+# ทดลองติดตั้งในเครื่อง
+```
+git clone git@github.com:zupaazhai/vue-longdo-map.git
+cd vue-longdo-map
+npm install
+```
 # ข้อมูลเพิ่มเติม
 Longdo Map API Reference ([http://api.longdo.com/map/doc/content/](http://api.longdo.com/map/doc/content/))
 Longdo Map Demo ([http://api.longdo.com/map/doc/](http://api.longdo.com/map/doc/))
