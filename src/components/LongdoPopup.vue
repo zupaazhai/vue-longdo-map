@@ -5,15 +5,23 @@
 <script>
 export default {
   props: {
-    map: Promise
+    map: Promise,
+    popup: {
+      type: Object,
+      required: true
+    }
   },
   name: 'LongdoPopup',
   created: function () {
+
     this.map.then(map => {
-      map.Overlays.add(new longdo.Popup({ lon: 100, lat: 16 }, {
-        title: 'Popup',
-        detail: 'Simple popup'
-      }))
+
+      let detail = this.popup.detail ? this.popup.detail : {},
+        location = this.popup.location ? this.popup.location : {}
+
+      var popup = new longdo.Popup(location, detail)
+
+      map.Overlays.add(popup)
     })
   }
 }

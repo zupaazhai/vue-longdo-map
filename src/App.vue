@@ -3,13 +3,18 @@
     <LongdoMap :center="map.center" :apiKey="map.apiKey">
       <template slot-scope="{ map }">
         <LongdoMapMarker
+          :map="map"
           @click="onClickMarker"
           @move="onMoveMarker"
           @hover="onHoverMarker"
           @change="onChageMarker"
           v-for="marker in markers"
-          :marker="marker"
-          :map="map"></LongdoMapMarker>
+          :marker="marker"></LongdoMapMarker>
+
+        <LongdoPopup
+          v-for="popup in popups"
+          :popup="popup"
+          :map="map"></LongdoPopup>
       </template>
     </LongdoMap>
   </div>
@@ -30,7 +35,7 @@ export default {
   data: () => {
     return {
       map: {
-        apiKey: 'c85040ce6273322881a3f0461d7c2e82',
+        apiKey: process.env.VUE_APP_API_KEY,
         center: {
           lon: 100,
           lat: 16
@@ -38,9 +43,10 @@ export default {
       },
       markers: [
         {
+          id: 1,
           location: {
-            lon:100,
-            lat: 16,
+            lon: 100,
+            lat: 16
           },
           detail: {
             title: 'Marker',
@@ -54,12 +60,14 @@ export default {
           }
         },
         {
+          id: 2,
           location: {
             lat: 18,
             lon: 98
           }
         },
         {
+          id: 3,
           location: {
             lat: 18,
             lon: 99
@@ -69,6 +77,21 @@ export default {
               url: 'https://map.longdo.com/mmmap/images/pin_mark.png',
               offset: { x: 12, y: 45 }
             }
+          }
+        }
+      ],
+      popups: [
+        {
+          id: 1,
+          location: {
+            lat: 20,
+            lon: 99
+          },
+          detail: {
+            title: 'Popup',
+            detail: 'Popup detail...',
+            size: { width: 200, height: 200 },
+            closable: false
           }
         }
       ]
@@ -88,7 +111,7 @@ export default {
       console.log('move')
     },
     onHoverMarker: function (marker) {
-      console.log('Hover')
+      console.log('hover')
     },
     onChageMarker: function (marker) {
       console.log('change')
