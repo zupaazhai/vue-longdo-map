@@ -1,7 +1,11 @@
 {
   "name": "vue-longdo-map",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": false,
+  "homepage": "https://github.com/zupaazhai/vue-longdo-map",
+  "author": {
+    "name": "Supachai Wongmoon"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -11,6 +15,11 @@
   "dependencies": {
     "vue": "^2.5.17"
   },
+  "keywords": [
+    "map",
+    "longdo",
+    "longdo map"
+  ],
   "main": "./dist/vue-longdo-map.common.js",
   "files": [
     "dist/*",
